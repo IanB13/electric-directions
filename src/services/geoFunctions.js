@@ -42,7 +42,6 @@ export const routeDirections = async (origin, destination, google , waypoint) =>
         if(waypoint){
          directions = {...directions, waypoints}
         }
-        console.log(directions)
         return new Promise((resolve, reject) => {
             directionsService.route((directions),(response, code)=>{
                 if(code === "OK"){

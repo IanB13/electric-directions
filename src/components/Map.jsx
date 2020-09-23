@@ -1,26 +1,15 @@
 import React, { useEffect, useRef } from 'react';
-import { useDispatch,useSelector } from 'react-redux';
-import { updateMarkers, googleFinishedLoading } from '../reducers/actions';
+import { useDispatch } from 'react-redux';
+import { googleFinishedLoading } from '../reducers/actions';
 
 const Map = () => {
     const dispatch = useDispatch();
     const mapRef = useRef()
 
-    const state = useSelector(state => state)
-    const {chargers,estimate} = state
-
     //initializes map, only happens once
     useEffect(()=>{
         dispatch(googleFinishedLoading(mapRef))
     },[dispatch]) 
-
-    //updates marker on estimate change
-    useEffect(()=>{
-        if(chargers[0]?.travel){
-        dispatch(updateMarkers(state))
-        }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[estimate])
 
     return (
         <div className="map-overlay">

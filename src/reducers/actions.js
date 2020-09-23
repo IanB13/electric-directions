@@ -1,6 +1,4 @@
-import {jobTravel} from '../services/jobTravel';
 import {jobMarkerGenerator} from '../services/marker/generate';
-import updateMarker from '../services/marker/update'
 import {store} from './store'
 
 //initilize map
@@ -60,38 +58,6 @@ export const initalizeChargerMarkers =(google) =>{
     }
 }
 
-
-export const updateMarkers = (state) =>{
-    return  dispatch => {
-        const data = updateMarker(state)
-        dispatch({
-            type: 'UPDATE_MARKERS',
-            data
-        })
-    }
-}
-
-export const changeEstimate = (estimate) => {
-    return  dispatch => {
-        dispatch({
-            type: 'CHANGE_ESTIMATE',
-            data: estimate,
-        })
-    }
-}
-
-
-export const addTravel = (jobs,builder,google) =>{
-    const modifiedJobs = jobTravel(jobs,builder,google)
-
-     return async dispatch =>{
-        dispatch({
-            type: 'ADD_TRAVEL',
-            data: await modifiedJobs
-        })
-    }
-
-}
 
 export const addHome = (markerData) =>{
     return  dispatch => {

@@ -5,9 +5,6 @@ const findRoute = async (routeType,fastCharge)  =>{
     const {chargers,google,locations} = store.getState();
     const chargerArray = fastCharge? chargers.filter(charge => charge.type ==='fast') : chargers
 
-    console.log(fastCharge,"fast charge")
-    console.log(chargerArray)
-
     let origin = locations.home.position
     if(routeType === 'work') origin = locations.work.position
 
