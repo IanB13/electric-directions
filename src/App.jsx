@@ -5,11 +5,13 @@ import EstimateModal from './components/EstimateModal/EstimateModal'
 import InfoModal from './components/InfoModal'
 import Instructions from './components/Instructions'
 import 'semantic-ui-css/semantic.min.css'
+import AddLocationButton from './components/AddLocationButton';
 
 function App() {
   return (
     <div className="App">
       <Map />
+      <AddLocationButton />
       <Instructions />
       <EstimateModal />
       <InfoModal />

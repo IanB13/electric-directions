@@ -1,18 +1,29 @@
 import fastChargerIcon from '../../resources/fastChargerIcon.svg'
 import standardChargerIcon from '../../resources/standardChargerIcon.svg'
+import homeIcon from '../../resources/homeIcon.svg'
+import workIcon from '../../resources/workIcon.svg'
+
 const createMarker = (mapState, position, type) => {
     let iconSVG = null;
     let content = null;
     switch(type){
         case 'fast':
-        content = '<div> Fast Charger Location! </br> Currently this is randomly generated</div>';
-        iconSVG = fastChargerIcon;
-        break;
+            content = '<div> Fast Charger Location! </br> Currently this is randomly generated</div>';
+            iconSVG = fastChargerIcon;
+            break;
         case 'standard':
-        content = `<div> Standard Charger Location! </br> Currently this is randomly generated</div>`;
-        iconSVG = standardChargerIcon;
-        break;
-        default: //will throw error for exaustive type checking in ts
+            content = `<div> Standard Charger Location! </br> Currently this is randomly generated</div>`;
+            iconSVG = standardChargerIcon;
+            break;
+        case 'work':
+            content = `<div> Your Work Location!</div>`;
+            iconSVG = workIcon;
+            break;
+        case 'home':
+            content = `<div> Your Home Location!</div>`;
+            iconSVG = homeIcon;
+            break;
+        default: 
     }
     const icon = {
         url: iconSVG,
