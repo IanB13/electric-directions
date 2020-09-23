@@ -1,6 +1,6 @@
 const jobsReducer = (state = {loading:true}, action) => {
     switch (action.type) {
-      case 'INIT_JOBMARKERS':
+      case 'INIT_CHARGER_MARKERS':
         const initJobs = action.data
         return initJobs
       case 'ADD_TRAVEL':

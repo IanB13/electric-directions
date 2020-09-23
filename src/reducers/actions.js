@@ -40,7 +40,7 @@ export const initDirectionsRender = (google) =>{
         const directionsRenderer = new google.maps.DirectionsRenderer();
         directionsRenderer.setMap(google.map);
         dispatch({
-            type: 'INIT_DIRECTIONS',
+            type: 'INIT_DIRECTIONS_RENDERER',
             data:{
                 ...google,
                 directionsRenderer
@@ -50,11 +50,11 @@ export const initDirectionsRender = (google) =>{
 }
 
 // Initilizes Jobs and builder
-export const initalizeJobMarkers =(google) =>{
+export const initalizeChargerMarkers =(google) =>{
     return  dispatch => {
         const data = jobMarkerGenerator(google)
         dispatch({
-            type: 'INIT_JOBMARKERS',
+            type: 'INIT_CHARGER_MARKERS',
             data
         })
     }
@@ -107,9 +107,8 @@ export const addTravel = (jobs,builder,google) =>{
 export const googleFinishedLoading  = (mapRef) => async (dispatch) =>{
     await dispatch(initMap(mapRef))
     const initGoogle = store.getState().google
-    await dispatch(initalizeJobMarkers(initGoogle))
-    await dispatch(initalizeBuilderMarker(initGoogle))
+    await dispatch(initalizeChargerMarkers(initGoogle))
     await dispatch(initDirectionsRender(initGoogle))
     const {google,jobs,builder} = store.getState()
-    await dispatch(addTravel(jobs,builder,google)) 
+   // await dispatch(addTravel(jobs,builder,google)) 
   }

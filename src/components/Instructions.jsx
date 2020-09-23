@@ -4,7 +4,7 @@ import { Modal, List ,Image } from 'semantic-ui-react'
 
 
 function InfoModal() {
-  const [open, setOpen] = React.useState(true)
+  const [open, setOpen] = React.useState(false)
   const IconStyle = {
     "height": "1.5em",
     'paddingLeft':' 0.2em',
