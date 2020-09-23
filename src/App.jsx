@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Map from './components/Map'; 
-import EstimateModal from './components/EstimateModal/EstimateModal'
+import SelectionModal from './components/SelectionModal'
 import InfoModal from './components/InfoModal'
 import Instructions from './components/Instructions'
 import 'semantic-ui-css/semantic.min.css'
@@ -13,7 +13,7 @@ function App() {
       <Map />
       <AddLocationButton />
       <Instructions />
-      <EstimateModal />
+      <SelectionModal />
       <InfoModal />
     </div>
   );

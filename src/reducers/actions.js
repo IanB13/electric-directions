@@ -1,5 +1,5 @@
 import {jobTravel} from '../services/jobTravel';
-import {jobMarkerGenerator, builderMarkerGenerator} from '../services/marker/generate';
+import {jobMarkerGenerator} from '../services/marker/generate';
 import updateMarker from '../services/marker/update'
 import {store} from './store'
 
@@ -60,15 +60,6 @@ export const initalizeChargerMarkers =(google) =>{
     }
 }
 
-export const initalizeBuilderMarker = (google) =>{
-    return  dispatch => {
-        const data = builderMarkerGenerator(google)
-        dispatch({
-            type: 'INIT_BUILDERMARKER',
-            data
-        })
-    }
-}
 
 export const updateMarkers = (state) =>{
     return  dispatch => {

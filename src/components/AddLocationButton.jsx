@@ -48,7 +48,7 @@ const AddLocationButton = () => {
 
   if (locType === 'home') {
     return (
-      <Button className="black"
+      <Button className="blue"
         id="addLocationsButton"
         onClick={addLocation}>
         Add Home </Button>
@@ -56,7 +56,7 @@ const AddLocationButton = () => {
   }
   else if (locType === 'work') {
     return (
-      <Button className="black"
+      <Button className="blue"
         id="addLocationsButton"
         onClick={addLocation}>
         Add Work </Button>
