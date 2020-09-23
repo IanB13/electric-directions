@@ -1,22 +1,25 @@
 import React,{ useState} from 'react'
+import { useDispatch } from 'react-redux'
 import { Button, Modal } from 'semantic-ui-react'
+import findRoute from '../services/findRoute'
 
 const InfoModal = () => {
-  const [closestType, setClosestType] = useState(null)
+  const [routeType, setRouteType] = useState(null)
   const [fastCharge, setFastCharge] = useState(false)
-
   const [open, setOpen] = useState(false)
-      const useCheckbox = (rateType) =>{
+  const dispatch = useDispatch()
+
+      const useCheckbox = (routeType) =>{
         const [checked, setChecked] = useState(false)
     
         const onChange = () => {
           if(!checked){
-            setClosestType(rateType)
+            setRouteType(routeType)
             closestHome.setChecked(false)
             closestWork.setChecked(false)
             shortCommute.setChecked(false)
           } else{
-            setClosestType(null)
+            setRouteType(null)
           }
           setChecked(!checked)
           
@@ -28,7 +31,14 @@ const InfoModal = () => {
     const closestWork = useCheckbox('work')
     const shortCommute = useCheckbox('commute')
 
-    const buttonColor = closestType?'blue':'grey'
+    const buttonColor = routeType?'blue':'grey'
+
+    const go = () =>{
+      if(routeType){
+          setOpen(false)
+          dispatch(findRoute(routeType,fastCharge))
+      }
+    }
   return (
     <Modal
       closeIcon
@@ -56,7 +66,7 @@ const InfoModal = () => {
           Fast Charging Only
         </div>
 
-        <Button className = {buttonColor}> GO </Button>
+        <Button className = {buttonColor} onClick = {go}> GO </Button>
       </Modal.Content>
     </Modal>
   )

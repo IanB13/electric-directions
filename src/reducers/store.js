@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import mapReducer from './mapReducer';
-import estimateReducer from './estimateReducer';
+import routeReducer from './routeReducer';
 import chargerReducer from './chargerReducer';
 import locationsReducer from './locationsReducer';
 
@@ -11,7 +11,7 @@ const reducer = combineReducers({
     chargers: chargerReducer,
     locations: locationsReducer,
     google: mapReducer,
-    estimate: estimateReducer
+    route: routeReducer
 })
 
 export const store = createStore(
