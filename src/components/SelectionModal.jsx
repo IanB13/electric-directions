@@ -1,4 +1,5 @@
 import React,{ useState} from 'react'
+import { useSelector } from 'react-redux'
 import { Button, Modal } from 'semantic-ui-react'
 import findRoute from '../services/findRoute'
 
@@ -6,7 +7,7 @@ const InfoModal = () => {
   const [routeType, setRouteType] = useState(null)
   const [fastCharge, setFastCharge] = useState(false)
   const [open, setOpen] = useState(false)
-
+  const selector = useSelector(state => state.locations);
       const useCheckbox = (routeType) =>{
         const [checked, setChecked] = useState(false)
     
@@ -22,8 +23,9 @@ const InfoModal = () => {
           setChecked(!checked)
           
         }
+        const style = { "marginRight": "5px"}
         const type = 'checkbox'
-        return { DOM: { type, checked, onChange}, setChecked}
+        return { DOM: { type, checked, onChange, style}, setChecked}
     }
     const closestHome = useCheckbox('home')
     const closestWork = useCheckbox('work')
@@ -37,8 +39,13 @@ const InfoModal = () => {
           findRoute(routeType,fastCharge)
       }
     }
+  if(selector?.work){
   return (
     <Modal
+      style ={ {
+        "fontSize": "14.5px",
+        "lineHeight":"1.4"
+    }}
       closeIcon
       open={open} 
       size='mini'
@@ -64,10 +71,12 @@ const InfoModal = () => {
           Fast Charging Only
         </div>
 
-        <Button className = {buttonColor} onClick = {go}> GO </Button>
+        <Button className = {buttonColor} onClick = {go} style ={{"margin-top":"8px"}}> GO </Button>
       </Modal.Content>
     </Modal>
   )
+  }
+  else return null
 }
 
 export default InfoModal

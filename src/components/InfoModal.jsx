@@ -19,7 +19,7 @@ function InfoModal() {
         Enter where you live or the closest location and we will find the 
         best charger for you to use!
         </p>
-        <div>View the source code <a href ="https://github.com/IanB13/travel-cost-estimator">here</a>. </div>
+        <div>View the source code <a href ="https://github.com/IanB13/electric-directions">here</a>. </div>
         <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
       </Modal.Content>
     </Modal>
