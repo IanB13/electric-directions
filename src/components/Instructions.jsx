@@ -1,7 +1,5 @@
 import React from 'react'
 import { Modal, List ,Image } from 'semantic-ui-react'
-import worker from "../resources/worker.svg"
-import hammer from "../resources/hammer.svg"
 
 
 function InfoModal() {
@@ -20,12 +18,9 @@ function InfoModal() {
     >
       <Modal.Content>
         <List as='ol'>
-        <List.Item as='li'>Click 'Select Estimate'</List.Item>
-        <List.Item as='li'>Select an estimate type then choose flat or variable rate </List.Item>
-        <List.Item as='li'>Click on one of the tool icons
-            <Image src = {hammer} alt="tools" inline style = {IconStyle } /> 
-            to find the estimated cost of travel from the workshop icon
-            <Image src = {worker} alt="workshop" inline style = {IconStyle} /> 
+        <List.Item as='li'>Instructions are </List.Item>
+        <List.Item as='li'>here</List.Item>
+        <List.Item as='li'>to find
         </List.Item>
         </List>
       </Modal.Content>

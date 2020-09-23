@@ -1,17 +1,11 @@
-import hammer from '../../resources/hammer.svg'; //need to add credit for SVGs
-import worker from '../../resources/worker.svg';
-
-
 const createMarker = (mapState, position, type) => {
     let iconSVG = null;
     let content = null;
     switch(type){
         case 'job':
-        iconSVG = hammer;
         content = '<div> Select an estimate type for travel cost estimates! </div>'
         break;
         case 'builder':
-        iconSVG = worker;
         content = `<div> This is the start location for estimates </div> `
         break;
         default: //will throw error for exaustive type checking in ts

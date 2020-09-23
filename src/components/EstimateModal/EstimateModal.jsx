@@ -1,10 +1,6 @@
 import React, { useState } from 'react'
 import { Button, Modal, Menu ,Image } from 'semantic-ui-react'
 import DistEstimateForm from "./DistEstimateForm"
-import road from "../../resources/road.svg" //Need to credit
-import clock from "../../resources/clock.svg"
-import crow from "../../resources/crow.svg"
-
 
 const EstimateModal = () => {
     const [open, setOpen] = useState(false)
@@ -32,7 +28,7 @@ const EstimateModal = () => {
                         name='Trip Distance'
                         onClick={handleMenuClick}
                     > 
-                    <Image src = {road} alt="road" avatar/>
+                    <Image  alt="road" avatar/>
                         Trip Distance
                     </Menu.Item>
 
@@ -41,7 +37,7 @@ const EstimateModal = () => {
                         name='Trip Time'
                         onClick={handleMenuClick}
                     >
-                    <Image src={clock} alt="clock" avatar />
+                    <Image  alt="clock" avatar />
                         Trip Time<span> </span>
                     </Menu.Item>
 
@@ -50,7 +46,7 @@ const EstimateModal = () => {
                         name='Crow Flies Distance'
                         onClick={handleMenuClick}
                     >
-                    <Image src={crow} alt="crow" avatar />
+                    <Image  alt="crow" avatar />
                         Crow Flies Distance
                     </Menu.Item>
 
