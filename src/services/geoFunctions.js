@@ -28,7 +28,7 @@ export const haversineDist = (coordinates1, coordinates2) => {
 }
 
 // uses google direction service
-export const routeDirections = async (origin, destination, google) =>{
+export const routeDirections = async (origin, destination, google , waypoint) =>{
     const directionsService = new google.maps.DirectionsService();
     
     const directionRequest = {
@@ -38,7 +38,11 @@ export const routeDirections = async (origin, destination, google) =>{
     }
     
     // wrapping directionServices.Route in promise for async functionality
-    const directionServiceRoutePromise = (directions) =>{
+    const directionServiceRoutePromise = (directions,waypoints) =>{
+        if(waypoint){
+         directions = {...directions, waypoints}
+        }
+        console.log(directions)
         return new Promise((resolve, reject) => {
             directionsService.route((directions),(response, code)=>{
                 if(code === "OK"){
@@ -50,7 +54,7 @@ export const routeDirections = async (origin, destination, google) =>{
         })
     }
     
-    const directions = await directionServiceRoutePromise(directionRequest)
+    const directions = await directionServiceRoutePromise(directionRequest,waypoint)
     return directions
 }
 
