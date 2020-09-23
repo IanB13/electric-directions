@@ -27,9 +27,9 @@ const createMarker = (mapState, position, type) => {
     }
     const icon = {
         url: iconSVG,
-        scaledSize: new mapState.maps.Size(25, 25), // scaled size
+        scaledSize: new mapState.maps.Size(26, 26), // scaled size
         origin: new mapState.maps.Point(0, 0), // origin
-        anchor: new mapState.maps.Point(25/2, 25/2) // anchor
+        anchor: new mapState.maps.Point(0, 0) // anchor
       };
 
     const marker = new mapState.maps.Marker({
