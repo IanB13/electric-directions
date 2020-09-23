@@ -1,26 +1,62 @@
-import React from 'react'
+import React,{ useState} from 'react'
 import { Button, Modal } from 'semantic-ui-react'
 
-function InfoModal() {
-  const [open, setOpen] = React.useState(false)
+const InfoModal = () => {
+  const [closestType, setClosestType] = useState(null)
+  const [fastCharge, setFastCharge] = useState(false)
 
+  const [open, setOpen] = useState(false)
+      const useCheckbox = (rateType) =>{
+        const [checked, setChecked] = useState(false)
+    
+        const onChange = () => {
+          if(!checked){
+            setClosestType(rateType)
+            closestHome.setChecked(false)
+            closestWork.setChecked(false)
+            shortCommute.setChecked(false)
+          } else{
+            setClosestType(null)
+          }
+          setChecked(!checked)
+          
+        }
+        const type = 'checkbox'
+        return { DOM: { type, checked, onChange}, setChecked}
+    }
+    const closestHome = useCheckbox('home')
+    const closestWork = useCheckbox('work')
+    const shortCommute = useCheckbox('commute')
+
+    const buttonColor = closestType?'blue':'grey'
   return (
     <Modal
       closeIcon
       open={open} 
-      size='small'
+      size='mini'
       trigger={<Button className = "blue" id = "selectionModalButton"> Find Closest Charger</Button>}
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
     >
       <Modal.Content>
-        <p>
-        This app helps find the best charger location for you!
-        Enter where you live or the closest location and we will find the 
-        best charger for you to use!
-        </p>
-        <div>View the source code <a href ="https://github.com/IanB13/travel-cost-estimator">here</a>. </div>
-        <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+        <div>
+        <input {...closestHome.DOM} />
+          Closest to Home 
+        </div>
+        <div>
+        <input {...closestWork.DOM} />
+          Closest to Work
+        </div>
+        <div>
+        <input {...shortCommute.DOM} />
+          Shortest commute change
+        </div>
+        <div>
+        <input type = "checkbox" onChange = { () => {setFastCharge(!fastCharge)} } />
+          Fast Charging Only
+        </div>
+
+        <Button className = {buttonColor}> GO </Button>
       </Modal.Content>
     </Modal>
   )
