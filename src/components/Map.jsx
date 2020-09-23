@@ -7,7 +7,7 @@ const Map = () => {
     const mapRef = useRef()
 
     const state = useSelector(state => state)
-    const {jobs,estimate} = state
+    const {chargers,estimate} = state
 
     //initializes map, only happens once
     useEffect(()=>{
@@ -16,7 +16,7 @@ const Map = () => {
 
     //updates marker on estimate change
     useEffect(()=>{
-        if(jobs[0]?.travel){
+        if(chargers[0]?.travel){
         dispatch(updateMarkers(state))
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
