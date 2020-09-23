@@ -4,12 +4,12 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import mapReducer from './mapReducer';
 import estimateReducer from './estimateReducer';
-import jobReducer from './chargerReducer';
-import builderReducer from './locationsReducer';
+import chargerReducer from './chargerReducer';
+import locationsReducer from './locationsReducer';
 
 const reducer = combineReducers({
-    jobs: jobReducer,
-    builder: builderReducer,
+    chargers: chargerReducer,
+    locations: locationsReducer,
     google: mapReducer,
     estimate: estimateReducer
 })

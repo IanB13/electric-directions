@@ -98,7 +98,26 @@ export const addTravel = (jobs,builder,google) =>{
             type: 'ADD_TRAVEL',
             data: await modifiedJobs
         })
+    }
 
+}
+
+export const addHome = (markerData) =>{
+    return  dispatch => {
+        dispatch({
+            type: 'ADD_HOME_LOCATION',
+            data: {...markerData},
+        })
+    }
+
+}
+
+export const addWork = (markerData) => {
+    return  dispatch => {
+        dispatch({
+            type: 'ADD_WORK_LOCATION',
+            data: {...markerData},
+        })
     }
 
 }
@@ -109,6 +128,4 @@ export const googleFinishedLoading  = (mapRef) => async (dispatch) =>{
     const initGoogle = store.getState().google
     await dispatch(initalizeChargerMarkers(initGoogle))
     await dispatch(initDirectionsRender(initGoogle))
-    const {google,jobs,builder} = store.getState()
-   // await dispatch(addTravel(jobs,builder,google)) 
   }

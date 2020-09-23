@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from 'semantic-ui-react';
-import { useDispatch,useSelector } from 'react-redux';
+import {useSelector, useDispatch } from 'react-redux';
+import {addHome, addWork} from '../reducers/actions';
 import createMarker from '../services/marker/create';
 import homeIcon from '../resources/homeIcon.svg';
 import workIcon from '../resources/workIcon.svg';
@@ -20,7 +21,7 @@ const AddLocationButton = () => {
   }
 
   const addLocation = () => {
-    if (locType === 'home') google.map.setOptions(homeCursor);
+    if (locType === 'home') google.map.setOptions(homeCursor); //sets cursor to svg
     else google.map.setOptions(workCursor);
 
     
@@ -29,16 +30,18 @@ const AddLocationButton = () => {
     });
 
     const placeMarker = (location) => {
-      createMarker(google, location, locType)
+      const markerdata = createMarker(google, location, locType)
       google.maps.event.removeListener(addMarker)
       google.map.setOptions({draggableCursor:''});
+
+      //sends to Actions to store in redux state
+      if (locType === 'home') dispatch(addWork(markerdata));
+      else dispatch(addHome(markerdata))
     }
+
   
-    if (locType === 'home'){
-       setLocType('work')
-      //dispatch
-      }
-    else{ setLocType(null)}
+    if (locType === 'home') setLocType('work')
+    else setLocType(null)
   }
 
 
