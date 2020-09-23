@@ -1,5 +1,4 @@
 import React,{ useState} from 'react'
-import { useDispatch } from 'react-redux'
 import { Button, Modal } from 'semantic-ui-react'
 import findRoute from '../services/findRoute'
 
@@ -7,7 +6,6 @@ const InfoModal = () => {
   const [routeType, setRouteType] = useState(null)
   const [fastCharge, setFastCharge] = useState(false)
   const [open, setOpen] = useState(false)
-  const dispatch = useDispatch()
 
       const useCheckbox = (routeType) =>{
         const [checked, setChecked] = useState(false)
@@ -36,7 +34,7 @@ const InfoModal = () => {
     const go = () =>{
       if(routeType){
           setOpen(false)
-          dispatch(findRoute(routeType,fastCharge))
+          findRoute(routeType,fastCharge)
       }
     }
   return (
@@ -62,7 +60,7 @@ const InfoModal = () => {
           Shortest commute change
         </div>
         <div>
-        <input type = "checkbox" onChange = { () => {setFastCharge(!fastCharge)} } />
+        <input type = "checkbox" checked ={fastCharge} onChange = { () => {setFastCharge(!fastCharge)} } />
           Fast Charging Only
         </div>
 

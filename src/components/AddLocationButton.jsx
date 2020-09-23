@@ -35,8 +35,8 @@ const AddLocationButton = () => {
       google.map.setOptions({draggableCursor:''});
 
       //sends to Actions to store in redux state
-      if (locType === 'home') dispatch(addWork(markerdata));
-      else dispatch(addHome(markerdata))
+      if (locType === 'home') dispatch(addHome(markerdata));
+      else dispatch(addWork(markerdata))
     }
 
   
